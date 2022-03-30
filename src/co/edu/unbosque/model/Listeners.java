@@ -35,5 +35,4 @@ public class Listeners {
     public static void BMListener() {
         System.out.println("bm is listening");
     }
-
 }
