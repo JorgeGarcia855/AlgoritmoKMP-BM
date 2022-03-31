@@ -8,7 +8,6 @@ import java.awt.*;
 public class MainWindow extends JFrame {
 
     private static MainWindow mainWindow = null;
-
     private final JButton[] button = new JButton[4];
     private final JTextArea textArea = new JTextArea();
     private final JTextField textField = new JTextField();

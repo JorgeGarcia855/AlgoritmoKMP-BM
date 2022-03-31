@@ -10,8 +10,9 @@ import java.nio.file.Path;
 import java.util.stream.Stream;
 
 public class Listeners {
+    private static final MainWindow window = MainWindow.getInstance();
+
     public static void loadFileListener() {
-        MainWindow window = MainWindow.getInstance();
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setAcceptAllFileFilterUsed(false);
@@ -20,16 +21,21 @@ public class Listeners {
 
         String filePath = String.valueOf(fileChooser.getSelectedFile());
         StringBuilder textLines = new StringBuilder();
-        try (Stream<String> lines = (Files.newBufferedReader(Path.of(filePath)).lines())) {
+        try (Stream<String> lines = Files.newBufferedReader(Path.of(filePath)).lines()) {
             lines.forEach(s -> textLines.append(s).append("\n"));
             window.getTextArea().setText(textLines.toString());
         } catch (IOException ex) {
-            new JOptionPane(JOptionPane.ERROR_MESSAGE).setMessage("Error al abrir el archivo");
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public static void KMPListener() {
-        System.out.println("kmp is listening");
+        try {
+            Algorithms.KMP(window.getTextField().getText(), window.getTextArea().getText());
+        } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null, "Debe escribir texto", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 
     public static void BMListener() {
