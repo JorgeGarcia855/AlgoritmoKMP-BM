@@ -23,7 +23,7 @@ public class MainWindow extends JFrame {
         setVisible(true);
     }
 
-    public void initComponents() {
+    private void initComponents() {
         textArea.setEditable(false);
         JScrollPane scrollArea = new JScrollPane(textArea);
         scrollArea.setBounds(10, 10, 300, 390);

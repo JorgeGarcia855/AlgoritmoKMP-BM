@@ -4,6 +4,9 @@ import co.edu.unbosque.view.MainWindow;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultHighlighter;
+import java.awt.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -31,11 +34,23 @@ public class Listeners {
 
     public static void KMPListener() {
         try {
+            Algorithms.getIndexes().clear();
+            window.getTextArea().getHighlighter().removeAllHighlights();
+            int patLen = window.getTextField().getText().length();
             Algorithms.KMP(window.getTextField().getText(), window.getTextArea().getText());
+            Algorithms.getIndexes().forEach(i -> {
+                try {
+                    window.getTextArea()
+                            .getHighlighter()
+                            .addHighlight(i, patLen + i,
+                                    new DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW));
+                } catch (BadLocationException e) {
+                    JOptionPane.showMessageDialog(null, "Mala posicion", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            });
         } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(null, "Debe escribir texto", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Debes escribir texto", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
     }
 
     public static void BMListener() {
