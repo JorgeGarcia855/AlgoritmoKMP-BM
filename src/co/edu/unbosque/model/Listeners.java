@@ -34,16 +34,15 @@ public class Listeners {
 
     public static void KMPListener() {
         try {
-            Algorithms.getIndexes().clear();
+            Algorithms.getIndexesKMP().clear();
             window.getTextArea().getHighlighter().removeAllHighlights();
             int patLen = window.getTextField().getText().length();
             Algorithms.KMP(window.getTextField().getText(), window.getTextArea().getText());
-            Algorithms.getIndexes().forEach(i -> {
+            Algorithms.getIndexesKMP().forEach(i -> {
                 try {
                     window.getTextArea()
                             .getHighlighter()
-                            .addHighlight(i, patLen + i,
-                                    new DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW));
+                            .addHighlight(i, patLen + i, new DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW));
                 } catch (BadLocationException e) {
                     JOptionPane.showMessageDialog(null, "Mala posicion", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -54,6 +53,22 @@ public class Listeners {
     }
 
     public static void BMListener() {
-        System.out.println("bm is listening");
+        try {
+            Algorithms.getIndexesBM().clear();
+            window.getTextArea().getHighlighter().removeAllHighlights();
+            int patLen = window.getTextField().getText().length();
+            Algorithms.BM(window.getTextArea().getText().toCharArray(), window.getTextField().getText().toCharArray());
+            Algorithms.getIndexesBM().forEach(i -> {
+                try {
+                    window.getTextArea()
+                            .getHighlighter()
+                            .addHighlight(i, patLen + i, new DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW));
+                } catch (BadLocationException e) {
+                    JOptionPane.showMessageDialog(null, "Mala posicion", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            });
+        } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null, "Debes escribir texto", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
