@@ -62,7 +62,7 @@ public class Listeners {
                 try {
                     window.getTextArea()
                             .getHighlighter()
-                            .addHighlight(i, patLen + i, new DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW));
+                            .addHighlight(i, patLen + i, new DefaultHighlighter.DefaultHighlightPainter(Color.CYAN));
                 } catch (BadLocationException e) {
                     JOptionPane.showMessageDialog(null, "Mala posicion", "Error", JOptionPane.ERROR_MESSAGE);
                 }
