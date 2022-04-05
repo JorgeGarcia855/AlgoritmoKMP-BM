@@ -1,6 +1,5 @@
 package co.edu.unbosque.view;
 
-import co.edu.unbosque.model.Algorithms;
 import co.edu.unbosque.model.Listeners;
 
 import javax.swing.*;
