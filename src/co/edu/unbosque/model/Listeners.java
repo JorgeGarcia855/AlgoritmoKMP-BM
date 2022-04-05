@@ -70,6 +70,7 @@ public class Listeners {
                     JOptionPane.showMessageDialog(null, "Mala posición", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             });
+            window.getNoOfTimes().setText("# de veces encontrado con KMP: "+ Algorithms.getIndexesKMP().size());
         } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(null, "Debes escribir texto", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -96,6 +97,7 @@ public class Listeners {
                     JOptionPane.showMessageDialog(null, "Mala posición", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             });
+            window.getNoOfTimes().setText("# de veces encontrado con BM: "+ Algorithms.getIndexesBM().size());
         } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(null, "Debes escribir texto", "Error", JOptionPane.ERROR_MESSAGE);
         }
