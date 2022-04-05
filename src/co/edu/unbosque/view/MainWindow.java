@@ -142,6 +142,8 @@ public class MainWindow extends JFrame {
      * Permite acceder a la línea de texto
      * en otras clases.
      * @return el atributo noOfTimes.
+     * @author Jorge García
+     * @author Oscar Florez
      */
     public JLabel getNoOfTimes() {
         return noOfTimes;
