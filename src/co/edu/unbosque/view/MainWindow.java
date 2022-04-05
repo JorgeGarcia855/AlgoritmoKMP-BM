@@ -5,13 +5,41 @@ import co.edu.unbosque.model.Listeners;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Esta clase contiene todos los componentes de la
+ * interfaz gráfica.
+ * @author Jorge García
+ * @author Oscar Florez
+ * @version 1.0
+ */
 public class MainWindow extends JFrame {
 
+    /**
+     * Atributo que crea una instancia nula de
+     * esta clase.
+     */
     private static MainWindow mainWindow = null;
+    /**
+     * Atributo que genera un arreglo de botones.
+     */
     private final JButton[] button = new JButton[4];
+    /**
+     * Atributo que genera un área de texto, para poder
+     * mostrar el archivo de texto.
+     */
     private final JTextArea textArea = new JTextArea();
+    /**
+     * Atributo que genera un campo de texto. Permite
+     * ingresar el patron de texto a buscar.
+     */
     private final JTextField textField = new JTextField();
 
+    /**
+     * Un constructor privado de MainWindow. Impide que
+     * se pueda crear otras instancias de la clase.
+     * @author Jorge García
+     * @author Oscar Florez
+     */
     private MainWindow() {
         setTitle("Programa Algoritmos KMP y BM");
         setSize(600, 500);
@@ -23,6 +51,13 @@ public class MainWindow extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Inicializa cada componente de la interfaz gráfica.
+     * Los botones usan lambdas para poder ejecutar los
+     * ActionEvent.
+     * @author Jorge García
+     * @author Oscar Florez
+     */
     private void initComponents() {
         textArea.setEditable(false);
         JScrollPane scrollArea = new JScrollPane(textArea);
@@ -60,15 +95,35 @@ public class MainWindow extends JFrame {
         getContentPane().add(button[3]);
     }
 
+    /**
+     * Genera una única instancia de la clase MainWindow.
+     * @return la instancia de esta clase.
+     * @author Jorge García
+     * @author Oscar Florez
+     */
     public static MainWindow getInstance() {
         if (mainWindow == null) mainWindow = new MainWindow();
         return mainWindow;
     }
 
+    /**
+     * Permite acceder al área de texto en
+     * otras clases.
+     * @return el atributo textArea.
+     * @author Jorge García
+     * @author Oscar Florez
+     */
     public JTextArea getTextArea() {
         return textArea;
     }
 
+    /**
+     * Permite acceder al campo de texto en
+     * otras clases.
+     * @return el atributo textField.
+     * @author Jorge García
+     * @author Oscar Florez
+     */
     public JTextField getTextField() {
         return textField;
     }

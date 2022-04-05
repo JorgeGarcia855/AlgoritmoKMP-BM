@@ -12,9 +12,26 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
+/**
+ * Esta clase contiene todos los eventos a ser
+ * escuchados por el ActionEvent de los botones.
+ * @author Jorge García
+ * @author Oscar Florez
+ * @version 1.0
+ */
 public class Listeners {
+    /**
+     * Este atributo contiene la instancia de MainWindow.
+     */
     private static final MainWindow window = MainWindow.getInstance();
 
+    /**
+     * Permite entrar a la ventana de selección de archivos que muestra
+     * únicamente archivos de texto plano (.txt). También carga el archivo
+     * al JTextArea.
+     * @author Jorge García
+     * @author Oscar Florez
+     */
     public static void loadFileListener() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -32,6 +49,12 @@ public class Listeners {
         }
     }
 
+    /**
+     * Resalta todos los patrones de texto con color amarillo,
+     * usando el algoritmo KMP.
+     * @author Jorge García
+     * @author Oscar Florez
+     */
     public static void KMPListener() {
         try {
             Algorithms.getIndexesKMP().clear();
@@ -44,7 +67,7 @@ public class Listeners {
                             .getHighlighter()
                             .addHighlight(i, patLen + i, new DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW));
                 } catch (BadLocationException e) {
-                    JOptionPane.showMessageDialog(null, "Mala posicion", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Mala posición", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             });
         } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
@@ -52,6 +75,12 @@ public class Listeners {
         }
     }
 
+    /**
+     * Resalta todos los patrones de texto con color cian,
+     * usando el algoritmo BM.
+     * @author Jorge García
+     * @author Oscar Florez
+     */
     public static void BMListener() {
         try {
             Algorithms.getIndexesBM().clear();
@@ -64,7 +93,7 @@ public class Listeners {
                             .getHighlighter()
                             .addHighlight(i, patLen + i, new DefaultHighlighter.DefaultHighlightPainter(Color.CYAN));
                 } catch (BadLocationException e) {
-                    JOptionPane.showMessageDialog(null, "Mala posicion", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Mala posición", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             });
         } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
